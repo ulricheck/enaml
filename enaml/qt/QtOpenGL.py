@@ -7,8 +7,5 @@
 #------------------------------------------------------------------------------
 from . import QT_API
 
-
-if QT_API == 'pyqt':
-    from PyQt4.QtOpenGL import *
-else:
-    from PySide.QtOpenGL import *
+from qtpy import PYQT5, PYQT4, PYSIDE
+from qtpy.QtOpenGL import *

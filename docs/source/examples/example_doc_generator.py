@@ -23,7 +23,8 @@ import shutil
 from atom.api import Atom, Unicode, Value
 import enaml
 from enaml.qt.qt_application import QtApplication
-from enaml.qt.QtGui import QApplication, QPixmap
+from enaml.qt.QtWidgets import QApplication
+from enaml.qt.QtGui import QPixmap
 from enaml.application import timed_call
 
 

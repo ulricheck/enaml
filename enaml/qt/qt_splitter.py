@@ -12,8 +12,8 @@ from atom.api import Typed
 from enaml.widgets.splitter import ProxySplitter
 
 from .QtCore import Qt, QEvent, Signal
-from .QtGui import (
-    QSplitter, QSplitterHandle, QVBoxLayout, QFrame, QApplication
+from .QtWidgets import (
+    QSplitter, QSplitterHandle, QVBoxLayout, QFrame
 )
 
 from .qt_constraints_widget import QtConstraintsWidget

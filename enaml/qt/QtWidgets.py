@@ -8,4 +8,4 @@
 from . import QT_API
 
 from qtpy import PYQT5, PYQT4, PYSIDE
-from qtpy.QtTest import *
+from qtpy.QtWidgets import *

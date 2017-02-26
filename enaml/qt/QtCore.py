@@ -7,19 +7,14 @@
 #------------------------------------------------------------------------------
 from . import QT_API 
 
+from qtpy import PYQT5, PYQT4, PYSIDE
+from qtpy.QtCore import *
 
-if QT_API == 'pyqt':
-    from PyQt4.QtCore import *
-    Property = pyqtProperty
-    Signal = pyqtSignal
-    Slot = pyqtSlot
+
+if PYQT4:
     QDateTime.toPython = QDateTime.__dict__['toPyDateTime']
     QDate.toPython = QDate.__dict__['toPyDate']
     QTime.toPython = QTime.__dict__['toPyTime']
-    __version__ = QT_VERSION_STR
     __version_info__ = tuple(map(int, QT_VERSION_STR.split('.')))
     # Remove the input hook or pdb.set_trace() will infinitely recurse
     pyqtRemoveInputHook()
-else:
-    from PySide import __version__, __version_info__
-    from PySide.QtCore import *

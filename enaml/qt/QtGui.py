@@ -8,7 +8,8 @@
 from . import QT_API
 
 
-if QT_API == 'pyqt':
-    from PyQt4.QtGui import *
-else:
-    from PySide.QtGui import *
+from qtpy import PYQT5, PYQT4, PYSIDE
+from qtpy.QtGui import *
+
+# if PYQT5:
+# 	from qtpy.QtWidgets import QApplication

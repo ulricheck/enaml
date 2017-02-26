@@ -11,10 +11,9 @@ from enaml.qt.QtCore import (
     Qt, QSize, QPoint, QRect, QMargins, QEvent, QObject, QPropertyAnimation,
     Signal
 )
-from enaml.qt.QtGui import (
-    QBoxLayout, QSizePolicy, QFrame, QPushButton, QStyle, QStyleOption,
-    QStylePainter, QStyleOptionButton, QApplication, QVBoxLayout, QHBoxLayout,
-    QLayout
+from enaml.qt.QtWidgets import (
+    QApplication, QBoxLayout, QSizePolicy, QFrame, QPushButton, QStyle, QStyleOption,
+    QStylePainter, QStyleOptionButton, QVBoxLayout, QHBoxLayout, QLayout
 )
 
 from .event_types import (

@@ -19,22 +19,13 @@ def prepare_pyqt():
     sip.setapi('QVariant', 2)
 
 
-QT_API = os.environ.get('QT_API', '').lower().strip()
+from qtpy import PYQT5, PYQT4, PYSIDE
+from qtpy import API as QT_API
 
-
-if not QT_API:
-    try:
-        import PyQt4
-        prepare_pyqt()
-        QT_API = os.environ['QT_API'] = 'pyqt'
-    except ImportError:
-        try:
-            import PySide
-            QT_API = os.environ['QT_API'] = 'pyside'
-        except ImportError:
-            raise ImportError('Cannot import PyQt4 or PySide')
-elif QT_API == 'pyqt':
+if PYQT4:
     prepare_pyqt()
-elif QT_API != 'pyside':
-    msg = "Invalid Qt API %r, valid values are: 'pyqt' or 'pyside'"
+elif PYSIDE or PYQT5:
+    pass
+else:
+    msg = "Invalid Qt API %r, valid values are: 'pyqt', 'pyqt4', 'pyqt5', or 'pyside'"
     raise ValueError(msg % QT_API)

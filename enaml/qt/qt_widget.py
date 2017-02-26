@@ -11,8 +11,10 @@ from enaml.drag_drop import DropAction
 from enaml.styling import StyleCache
 from enaml.widgets.widget import Feature, ProxyWidget
 
+from . import PYQT5
 from .QtCore import Qt, QSize, QPoint
-from .QtGui import QFont, QWidget, QWidgetAction, QApplication, QDrag, QPixmap
+from .QtGui import QFont, QDrag, QPixmap
+from .QtWidgets import QWidget, QWidgetAction, QApplication
 
 from . import focus_registry
 from .q_resource_helpers import (
@@ -172,7 +174,12 @@ class QtWidget(QtToolkitObject, ProxyWidget):
 
         """
         widget = self.focus_target()
-        if not widget.focusPolicy & Qt.TabFocus:
+
+        focusPolicy = widget.focusPolicy
+        if PYQT5:
+            focusPolicy = widget.focusPolicy()
+            
+        if not focusPolicy & Qt.TabFocus:
             return False
         if not widget.isEnabled():
             return False
@@ -343,7 +350,10 @@ class QtWidget(QtToolkitObject, ProxyWidget):
             qimg = get_cached_qimage(drag_data.image)
             qdrag.setPixmap(QPixmap.fromImage(qimg))
         else:
-            qdrag.setPixmap(QPixmap.grabWidget(widget))
+            if PYQT5:
+                qdrag.setPixmap(widget.grab())
+            else:
+                qdrag.setPixmap(QPixmap.grabWidget(widget))
         default = Qt.DropAction(drag_data.default_drop_action)
         supported = Qt.DropActions(drag_data.supported_actions)
         qresult = qdrag.exec_(supported, default)

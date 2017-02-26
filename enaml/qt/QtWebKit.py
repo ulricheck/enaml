@@ -7,8 +7,5 @@
 #------------------------------------------------------------------------------
 from . import QT_API
 
-
-if QT_API == 'pyqt':
-    from PyQt4.QtWebKit import *
-else:
-    from PySide.QtWebKit import *
+from qtpy import PYQT5, PYQT4, PYSIDE
+from qtpy.QtWebEngineWidgets import *

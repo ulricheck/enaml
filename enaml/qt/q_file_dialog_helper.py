@@ -6,12 +6,12 @@
 # The full license is in the file COPYING.txt, distributed with this software.
 #------------------------------------------------------------------------------
 from . import QT_API
-from .QtGui import QFileDialog
+from .QtWidgets import QFileDialog
 
 
 # A mapping from the Enaml dialog modes to the name of the static method
 # on QFileDialog which will launch the appropriate native dialog.
-if QT_API == 'pyqt':
+if QT_API == 'pyqt4':
     _STATIC_METHOD_NAMES = {
         'open_file': 'getOpenFileNameAndFilter',
         'open_files': 'getOpenFileNamesAndFilter',
