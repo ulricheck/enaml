@@ -15,6 +15,6 @@ if PYQT4 or PYQT5:
     QDateTime.toPython = QDateTime.__dict__['toPyDateTime']
     QDate.toPython = QDate.__dict__['toPyDate']
     QTime.toPython = QTime.__dict__['toPyTime']
-    __version_info__ = tuple(map(int, QT_VERSION_STR.split('.')))
+    #__version_info__ = tuple(map(int, QT_VERSION_STR.split('.')))
     # Remove the input hook or pdb.set_trace() will infinitely recurse
     pyqtRemoveInputHook()
