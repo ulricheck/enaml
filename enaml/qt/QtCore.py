@@ -11,7 +11,7 @@ from qtpy import PYQT5, PYQT4, PYSIDE
 from qtpy.QtCore import *
 
 
-if PYQT4:
+if PYQT4 or PYQT5:
     QDateTime.toPython = QDateTime.__dict__['toPyDateTime']
     QDate.toPython = QDate.__dict__['toPyDate']
     QTime.toPython = QTime.__dict__['toPyTime']
